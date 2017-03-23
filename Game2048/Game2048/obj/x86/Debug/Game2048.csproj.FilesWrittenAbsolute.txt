@@ -1,0 +1,6 @@
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/obj/x86/Debug/Game2048.gtk-gui.gui.stetic
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/bin/Debug/Game2048.exe.mdb
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/bin/Debug/Game2048.exe
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/obj/x86/Debug/Game2048.exe
+/home/jasonhe/Documents/MyCode/CSharp/GUI/Game2048/Game2048/obj/x86/Debug/Game2048.exe.mdb
