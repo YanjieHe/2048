@@ -15,6 +15,25 @@ public partial class MainWindow: Gtk.Window
     int nCols = 4;
     Image[] cells;
     Lattice lattice;
+    public static readonly Gdk.Pixbuf[] figures = new Gdk.Pixbuf[]
+    {
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 0 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 2 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 4 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 8 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 16 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 32 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 64 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 128 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 256 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 512 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 1024 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 2048 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 4096 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 8192 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 16384 + ".png")),
+        new Gdk.Pixbuf(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./figures/" + 65536 + ".png"))
+    };
 
     void Initialize()
     {
@@ -106,12 +125,26 @@ public partial class MainWindow: Gtk.Window
 
     void ShowLattice()
     {
-        for (uint i = 0; i < nRows; i++)
+        for (int i = 0; i < nRows; i++)
         {
-            for (uint j = 0; j < nCols; j++)
+            for (int j = 0; j < nCols; j++)
             {
-                this.cells[i * nCols + j].File = "./figures/" + this.lattice[(int)i, (int)j] + ".png";
+                //this.cells[i * nCols + j].File = "./figures/" + this.lattice[(int)i, (int)j] + ".png";
+                this.cells[i * nCols + j].Pixbuf = GetFigure(this.lattice[i, j]);
             }
+        }
+    }
+
+    Gdk.Pixbuf GetFigure(int number)
+    {
+        if (number == 0)
+        {
+            return figures[0];
+        }
+        else
+        {
+            int n = (int)Math.Log(number, 2);
+            return figures[n];
         }
     }
 

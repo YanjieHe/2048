@@ -23,6 +23,7 @@
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">2048</property>
+    <property name="Icon">file:./icon.png</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>

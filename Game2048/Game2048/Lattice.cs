@@ -54,10 +54,6 @@ namespace Game2048
             if (CanShift(direction))
             {
                 Shift(direction);
-                while (CanShift(direction))
-                {
-                    Shift(direction);
-                }
                 return true;
             }
             else
@@ -225,6 +221,8 @@ namespace Game2048
             this[origin_x, origin_y] = 0;
         }
 
+
+
         void Shift(Direction direction)
         {
             switch (direction)
@@ -246,6 +244,7 @@ namespace Game2048
 
         void ShiftUp()
         {
+            RemoveUpEmpties();
             for (int i = 1; i < nRows; i++)
             {
                 for (int j = 0; j < nCols; j++)
@@ -260,10 +259,12 @@ namespace Game2048
                     }
                 }
             }
+            RemoveUpEmpties();
         }
 
         void ShiftDown()
         {
+            RemoveDownEmpties();
             for (int i = nRows - 2; i >= 0; i--)
             {
                 for (int j = 0; j < nCols; j++)
@@ -278,10 +279,12 @@ namespace Game2048
                     }
                 }
             }
+            RemoveDownEmpties();
         }
 
         void ShiftLeft()
         {
+            RemoveLeftEmpties();
             for (int j = 1; j < nCols; j++)
             {
                 for (int i = 0; i < nRows; i++)
@@ -296,10 +299,12 @@ namespace Game2048
                     }
                 }
             }
+            RemoveLeftEmpties();
         }
 
         void ShiftRight()
         {
+            RemoveRightEmpties();
             for (int j = nCols - 2; j >= 0; j--)
             {
                 for (int i = 0; i < nRows; i++)
@@ -314,9 +319,72 @@ namespace Game2048
                     }
                 }
             }
+            RemoveRightEmpties();
         }
 
+        void RemoveUpEmpties()
+        {
+            for (int i = 1; i < nRows; i++)
+            {
+                for (int j = 0; j < nCols; j++)
+                {
+                    int k = i;
+                    while (k != 0 && this[k - 1, j] == 0 && this[i, j] != 0)
+                    {
+                        Move(k, j, k - 1, j);
+                        k--;
+                    }
+                }
+            }
+        }
 
+        void RemoveDownEmpties()
+        {
+            for (int i = nRows - 2; i >= 0; i--)
+            {
+                for (int j = 0; j < nCols; j++)
+                {
+                    int k = i;
+                    while (k != nRows - 1 && this[k + 1, j] == 0 && this[i, j] != 0)
+                    {
+                        Move(k, j, k + 1, j);
+                        k++;
+                    }
+                }
+            }
+        }
+
+        void RemoveLeftEmpties()
+        {
+            for (int j = 1; j < nCols; j++)
+            {
+                for (int i = 0; i < nRows; i++)
+                {
+                    int k = j;
+                    while (k != 0 && this[i, k - 1] == 0 && this[i, k] != 0)
+                    {
+                        Move(i, k, i, k - 1);
+                        k--;
+                    }
+                }
+            }
+        }
+
+        void RemoveRightEmpties()
+        {
+            for (int j = nCols - 2; j >= 0; j--)
+            {
+                for (int i = 0; i < nRows; i++)
+                {
+                    int k = j;
+                    while (k != nCols - 1 && this[i, k + 1] == 0 && this[i, k] != 0)
+                    {
+                        Move(i, k, i, k + 1);
+                        k++;
+                    }
+                }
+            }
+        }
     }
 }
 
