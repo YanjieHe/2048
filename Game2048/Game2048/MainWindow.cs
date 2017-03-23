@@ -33,7 +33,28 @@ public partial class MainWindow: Gtk.Window
         this.lattice = new Lattice();
         lattice.Reset();
         ShowLattice();
+        this.NewGameAction.Activated += NewGameAction_Activated;
         ShowAll();
+    }
+
+    void NewGameAction_Activated(object sender, EventArgs e)
+    {
+        using (var dialog = new MessageDialog(
+                                this, 
+                                DialogFlags.DestroyWithParent, 
+                                MessageType.Info, 
+                                ButtonsType.OkCancel, 
+                                "Do you want to start a new game?"))
+        {
+            int result = dialog.Run();
+            const int OK = -5;
+            dialog.Hide();
+            if (result == OK)
+            {
+                this.lattice.Reset();
+                ShowLattice();
+            }
+        }
     }
 
     void MainWindow_KeyReleaseEvent(object o, KeyReleaseEventArgs args)

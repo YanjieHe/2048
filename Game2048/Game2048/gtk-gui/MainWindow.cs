@@ -3,7 +3,15 @@
 
 public partial class MainWindow
 {
+	private global::Gtk.UIManager UIManager;
+	
+	private global::Gtk.Action _2048Action;
+	
+	private global::Gtk.Action NewGameAction;
+	
 	private global::Gtk.VBox vbox;
+	
+	private global::Gtk.MenuBar menubar1;
 	
 	private global::Gtk.Table table;
 
@@ -11,6 +19,16 @@ public partial class MainWindow
 	{
 		global::Stetic.Gui.Initialize (this);
 		// Widget MainWindow
+		this.UIManager = new global::Gtk.UIManager ();
+		global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
+		this._2048Action = new global::Gtk.Action ("_2048Action", global::Mono.Unix.Catalog.GetString ("2048"), null, null);
+		this._2048Action.ShortLabel = global::Mono.Unix.Catalog.GetString ("2048");
+		w1.Add (this._2048Action, null);
+		this.NewGameAction = new global::Gtk.Action ("NewGameAction", global::Mono.Unix.Catalog.GetString ("New Game"), null, null);
+		this.NewGameAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("New Game");
+		w1.Add (this.NewGameAction, null);
+		this.UIManager.InsertActionGroup (w1, 0);
+		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
@@ -19,13 +37,22 @@ public partial class MainWindow
 		this.vbox.Name = "vbox";
 		this.vbox.Spacing = 6;
 		// Container child vbox.Gtk.Box+BoxChild
+		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='_2048Action' action='_2048Action'><menuitem name='NewGameAction' action='NewGameAction'/></menu></menubar></ui>");
+		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
+		this.menubar1.Name = "menubar1";
+		this.vbox.Add (this.menubar1);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox [this.menubar1]));
+		w2.Position = 0;
+		w2.Expand = false;
+		w2.Fill = false;
+		// Container child vbox.Gtk.Box+BoxChild
 		this.table = new global::Gtk.Table (((uint)(4)), ((uint)(4)), false);
 		this.table.Name = "table";
 		this.table.RowSpacing = ((uint)(6));
 		this.table.ColumnSpacing = ((uint)(6));
 		this.vbox.Add (this.table);
-		global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox [this.table]));
-		w1.Position = 1;
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox [this.table]));
+		w3.Position = 1;
 		this.Add (this.vbox);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
