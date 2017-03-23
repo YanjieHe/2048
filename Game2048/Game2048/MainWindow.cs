@@ -28,7 +28,9 @@ public partial class MainWindow: Gtk.Window
                 this.table.Attach(cells[i * nCols + j], i, i + 1, j, j + 1);
             }
         }
+        this.table.BorderWidth = 10;
         this.Resizable = false;
+        this.ModifyBg(StateType.Normal, new Gdk.Color(182, 165, 149));
         this.KeyReleaseEvent += MainWindow_KeyReleaseEvent;
         this.lattice = new Lattice();
         lattice.Reset();
@@ -59,6 +61,7 @@ public partial class MainWindow: Gtk.Window
 
     void MainWindow_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
     {
+        // The "Gdk.Key" has some bugs. Left -> Up, Right -> Down; Up -> Left, Down -> Right;
         switch (args.Event.Key)
         {
             case Gdk.Key.Left:

@@ -11,7 +11,7 @@ public partial class MainWindow
 	
 	private global::Gtk.VBox vbox;
 	
-	private global::Gtk.MenuBar menubar1;
+	private global::Gtk.MenuBar menubar;
 	
 	private global::Gtk.Table table;
 
@@ -30,18 +30,18 @@ public partial class MainWindow
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
-		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
+		this.Title = global::Mono.Unix.Catalog.GetString ("2048");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vbox = new global::Gtk.VBox ();
 		this.vbox.Name = "vbox";
 		this.vbox.Spacing = 6;
 		// Container child vbox.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='_2048Action' action='_2048Action'><menuitem name='NewGameAction' action='NewGameAction'/></menu></menubar></ui>");
-		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
-		this.menubar1.Name = "menubar1";
-		this.vbox.Add (this.menubar1);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox [this.menubar1]));
+		this.UIManager.AddUiFromString ("<ui><menubar name='menubar'><menu name='_2048Action' action='_2048Action'><menuitem name='NewGameAction' action='NewGameAction'/></menu></menubar></ui>");
+		this.menubar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar")));
+		this.menubar.Name = "menubar";
+		this.vbox.Add (this.menubar);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox [this.menubar]));
 		w2.Position = 0;
 		w2.Expand = false;
 		w2.Fill = false;

@@ -22,7 +22,7 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
+    <property name="Title" translatable="yes">2048</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
@@ -30,9 +30,9 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.MenuBar" id="menubar1">
+          <widget class="Gtk.MenuBar" id="menubar">
             <property name="MemberName" />
-            <node name="__gtksharp_102_Stetic_Editor_ActionMenuBar" type="Menubar">
+            <node name="menubar" type="Menubar">
               <node type="Menu" action="_2048Action">
                 <node type="Menuitem" action="NewGameAction" />
               </node>
